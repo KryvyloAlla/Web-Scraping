@@ -1,0 +1,15 @@
+Список вакансій:
+[
+    "Mécanicien vl / pl  H/F",
+    "Chargé de recrutement  H/F",
+    "Assistant administratif et chargé d&#8217;accueil  H/F",
+    "Conducteur de ligne   H/F",
+    "Conducteur de ligne industriel  H/F",
+    "Conducteur engins de stockage.  H/F",
+    "Responsable showroom  H/F",
+    "Conducteur de ligne   H/F",
+    "Chauffeur PL TP  H/F",
+    "Plaquiste  H/F",
+    "Electrotechnicien  H/F",
+    "Opérateur de production  H/F"
+]
