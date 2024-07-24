@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Bitcoin",
+        "ticker": "BTC",
+        "price": "$65,743.00"
+    },
+    {
+        "name": "Ethereum",
+        "ticker": "ETH",
+        "price": "$3,339.02"
+    }
+]

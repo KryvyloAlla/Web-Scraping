@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсовий проєкт Кривило А.Я.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .crypto-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .crypto-table th, .crypto-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .crypto-table th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Курсовий проєкт Кривило А.Я.</h1>
+
+<h2>Binance</h2>
+<table id="binance-table" class="crypto-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Ticker</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<h2>Gate</h2>
+<table id="gate-table" class="crypto-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Ticker</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<h2>Minfin</h2>
+<table id="minfin-table" class="crypto-table">
+    <thead>
+        <tr>
+            <th>Валюта</th>
+            <th>Курс до Гривні</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<h2>News</h2>
+<ul id="news-list"></ul>
+
+<script>
+    async function fetchAndDisplayData(url, tableId, columns) {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const tableBody = document.querySelector(`#${tableId} tbody`);
+        tableBody.innerHTML = '';
+
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            columns.forEach(col => {
+                const cell = document.createElement('td');
+                cell.textContent = item[col];
+                row.appendChild(cell);
+            });
+            tableBody.appendChild(row);
+        });
+    }
+
+    async function fetchAndDisplayNews(url, listId) {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const list = document.getElementById(listId);
+        list.innerHTML = '';
+
+        data.forEach(item => {
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = item.link;
+            link.textContent = item.name;
+            listItem.appendChild(link);
+            list.appendChild(listItem);
+        });
+    }
+
+    // Fetch and display data
+    fetchAndDisplayData('crypto_data_Binance.json', 'binance-table', ['name', 'ticker', 'price']);
+    fetchAndDisplayData('crypto_data_Gate.json', 'gate-table', ['name', 'ticker', 'price']);
+    fetchAndDisplayData('crypto_data_Minfin.json', 'minfin-table', ['name', 'price']);
+    fetchAndDisplayNews('crypto_data_News.json', 'news-list');
+</script>
+<p>Файл потрібно відкривати з веб-сервера</p>
+</body>
+</html>
